@@ -1,4 +1,4 @@
-﻿#include "CommonFunct.h"
+#include "CommonFunct.h"
 #include "Utils.h"
 #include "LTexture.h"
 #include "Button.h"
@@ -24,7 +24,7 @@ Mix_Chunk* gJump = nullptr;
 Mix_Chunk* gLose = nullptr;
 
 SDL_Rect gPlayButton[BUTTON_TOTAL];
-SDL_Rect gHelpButton[BUTTON_TOTAL];
+SDL_Rect gIntroButton[BUTTON_TOTAL];
 SDL_Rect gBackButton[BUTTON_TOTAL];
 SDL_Rect gPauseButton[BUTTON_TOTAL];
 SDL_Rect gContinueButton[BUTTON_TOTAL];
@@ -33,12 +33,12 @@ SDL_Rect gCharacterClips[DinoFrames];
 SDL_Rect gEnemyClips[BirdFrames];
 
 LTexture gMenuTexture;
-LTexture gInstructionTexture;
+LTexture gIntroTexture;
 LTexture gBackgroundTexture[BackgroundLayer];
 LTexture gCharacterTexture;
 LTexture gGroundTexture;
 LTexture gPlayButtonTexture;
-LTexture gHelpButtonTexture;
+LTexture gIntroButtonTexture;
 LTexture gBackButtonTexture;
 LTexture gPauseButtonTexture;
 LTexture gContinueButtonTexture;
@@ -49,7 +49,7 @@ LTexture gText2Texture;
 LTexture gHighScoreTexture;
 
 Button PlayButton(PlayButX, PlayButY);
-Button HelpButton(HelpButX, HelpButY);
+Button IntroButton(IntroButX, IntroButY);
 Button BackButton(BackButX, BackButY);
 Button PauseButton(PauseButX, PauseButY);
 Button ContinueButton(ContinueButX, ContinueButY);
@@ -87,9 +87,9 @@ int main(int argc, char* args[])
 					bool Quit_Game = false;
 					HandlePlayButton(&e_mouse, PlayButton, Quit_Menu, Play_Again, gClick);
 						
-					HandleHelpButton(&e_mouse, gBackButton,
-									 HelpButton, BackButton, 
-									 gInstructionTexture, gBackButtonTexture,
+					HandleIntroButton(&e_mouse, gBackButton,
+									 IntroButton, BackButton, 
+									 gIntroTexture, gBackButtonTexture,
 									 gRenderer, Quit_Game, gClick);
 
 					if (Quit_Game == true)
@@ -103,8 +103,8 @@ int main(int argc, char* args[])
 				SDL_Rect* currentClip_Play = &gPlayButton[PlayButton.currentSprite];
 				PlayButton.Render(currentClip_Play, gRenderer, gPlayButtonTexture);
 
-				SDL_Rect* currentClip_Help = &gHelpButton[HelpButton.currentSprite];
-				HelpButton.Render(currentClip_Help, gRenderer, gHelpButtonTexture);
+				SDL_Rect* currentClip_Intro = &gIntroButton[IntroButton.currentSprite];
+				IntroButton.Render(currentClip_Intro, gRenderer, gIntroButtonTexture);
 
 				SDL_RenderPresent(gRenderer);
 			}
@@ -352,12 +352,12 @@ bool LoadMedia()
 				success = false;
 			}
 
-			if (!gInstructionTexture.LoadFromFile("imgs/background/intro.png", gRenderer))
+			if (!gIntroTexture.LoadFromFile("imgs/background/intro.png", gRenderer))
 			{
 				cout << "Failed to load intro image" << endl;
 				success = false;
 			}
-			if (!gLoseTexture.LoadFromFile("imgs/background/lose1.png", gRenderer))
+			if (!gLoseTexture.LoadFromFile("imgs/background/lose2.png", gRenderer))
 			{
 				cout << "Failed to load lose image" << endl;
 				success = false;
@@ -376,7 +376,7 @@ bool LoadMedia()
 				}
 			}
 
-			if (!gHelpButtonTexture.LoadFromFile("imgs/button/big_button/intro_button.png", gRenderer))
+			if (!gIntroButtonTexture.LoadFromFile("imgs/button/big_button/intro_button.png", gRenderer))
 			{
 				cout << "Failed to load intro_button image" << endl;
 				success = false;
@@ -385,7 +385,7 @@ bool LoadMedia()
 			{
 				for (int i = 0; i < BUTTON_TOTAL; ++i)
 				{
-					gHelpButton[i] = { 250 * i, 0, 250, 70 };
+					gIntroButton[i] = { 250 * i, 0, 250, 70 };
 				}
 			}
 
@@ -457,11 +457,11 @@ bool LoadMedia()
 void Close()
 {
 	gMenuTexture.Free();
-	gInstructionTexture.Free();
+	gIntroTexture.Free();
 	gCharacterTexture.Free();
 	gGroundTexture.Free();
 	gPlayButtonTexture.Free();
-	gHelpButtonTexture.Free();
+	gIntroButtonTexture.Free();
 	gBackButtonTexture.Free();
 	gPauseButtonTexture.Free();
 	gContinueButtonTexture.Free();
