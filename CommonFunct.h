@@ -66,8 +66,8 @@ const int SmallButHeight = 34;
 
 const int PlayButX = 339;
 const int PlayButY= 100;
-const int HelpButX= 339;
-const int HelpButY = 200;
+const int IntroButX= 339;
+const int IntroButY = 200;
 const int BackButX = 31;
 const int BackButY = 29;
 const int PauseButX = 840;
