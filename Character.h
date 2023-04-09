@@ -4,7 +4,7 @@
 
 #define JUMP 1
 #define FALL 2
-#define RUN	0
+#define RUN 0
 
 class Character
 {
