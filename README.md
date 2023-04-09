@@ -1,4 +1,4 @@
-__________DINO CITY_________
+________________DINO CITY___________________
 Hello, my name is Hiep.
 This is my big project using SDL to make a 2D Game.
 
