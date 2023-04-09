@@ -1,4 +1,4 @@
-﻿#include "Character.h"
+#include "Character.h"
 
 //vị  trí của nhân vật  
 Character::Character()
