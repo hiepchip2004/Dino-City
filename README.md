@@ -7,8 +7,8 @@ This is my big project using SDL to make a 2D Game.
 - He ran into the street and encountered a lot of obstacles, your task is to help this dinosaur avoid those obstacles safely.
 
 #HOW TO PLAY:
-- Use button UP or SPACE to jump over the obtacles to avoid threaten.
-- When you Lose, use button SPACE to play again.
+- Press button UP or SPACE to jump over the obtacles to avoid threaten.
+- When you Lose, press button SPACE to play again.
 
 #REQUIRED:
 - Microsoft Visual Studio // Code::Blocks
