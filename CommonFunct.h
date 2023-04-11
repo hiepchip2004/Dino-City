@@ -77,12 +77,8 @@ const int ContinueButY = 29;
 
 const int Text1X = 30;
 const int Text1Y = 20;
-const int Text2X = 30;
-const int Text2Y = 80;
-const int ScoreX = 260;
+const int ScoreX = 160;
 const int ScoreY = 20;
-const int HighScoreX = 260;
-const int HighScoreY = 80;
 
 const double Layer1Speed = 0.1;
 const double Layer2Speed = 0.25;
