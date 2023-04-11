@@ -89,14 +89,6 @@ void DrawPlayerScore(LTexture gTextTexture,
     TTF_Font* gFont,
     const int& score);
 
-//tính điểm cao nhất
-void DrawPlayerHighScore(LTexture gTextTexture,
-    LTexture gHighScoreTexture,
-    SDL_Color textColor,
-    SDL_Renderer* gRenderer,
-    TTF_Font* gFont, 
-    const string& HighScore);
-
 void DrawEndGameSelection(LTexture gLoseTexture,
     SDL_Event* e,
     SDL_Renderer* gRenderer,
