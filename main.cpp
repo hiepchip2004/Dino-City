@@ -45,8 +45,6 @@ LTexture gContinueButtonTexture;
 LTexture gLoseTexture;
 LTexture gText1Texture;
 LTexture gScoreTexture;
-LTexture gText2Texture;
-LTexture gHighScoreTexture;
 
 Button PlayButton(PlayButX, PlayButY);
 Button IntroButton(IntroButX, IntroButY);
@@ -117,7 +115,6 @@ int main(int argc, char* args[])
 				int acceleration = 0;
 				int frame_Character = 0;
 				int frame_Enemy = 0;
-				string highscore = GetHighScoreFromFile("high_score.txt");
 				
 				SDL_Event e;
 				Enemy sign(StandingEnemy);
@@ -187,9 +184,7 @@ int main(int argc, char* args[])
 						SDL_Rect* currentClip_Pause = &gPauseButton[PauseButton.currentSprite];
 						PauseButton.Render(currentClip_Pause, gRenderer, gPauseButtonTexture);
 
-
 						DrawPlayerScore(gText1Texture, gScoreTexture, textColor, gRenderer, gFont, score);
-						DrawPlayerHighScore(gText2Texture, gHighScoreTexture, textColor, gRenderer, gFont, highscore);
 
 						if (CheckEnemyColission(character,
 							sign, rock, bird,
@@ -197,7 +192,6 @@ int main(int argc, char* args[])
 						{
 							Mix_PauseMusic();
 							Mix_PlayChannel(MixChannel, gLose, NotRepeatable);
-							UpdateHighScore("high_score.txt", score, highscore);
 							Quit = true;
 						}
 
@@ -334,15 +328,9 @@ bool LoadMedia()
 		}
 		else
 		{
-			if (!gText1Texture.LoadFromRenderedText("Your score: ", gFont, textColor, gRenderer))
+			if (!gText1Texture.LoadFromRenderedText("Score: ", gFont, textColor, gRenderer))
 			{
 				cout << "Failed to render text1 texture" << endl;
-				success = false;
-			}
-
-			if (!gText2Texture.LoadFromRenderedText("High score: ", gFont, textColor, gRenderer))
-			{
-				cout << "Failed to render text2 texture" << endl;
 				success = false;
 			}
 			
@@ -357,13 +345,13 @@ bool LoadMedia()
 				cout << "Failed to load intro image" << endl;
 				success = false;
 			}
-			if (!gLoseTexture.LoadFromFile("imgs/background/lose2.png", gRenderer))
+			if (!gLoseTexture.LoadFromFile("imgs/background/lose.png", gRenderer))
 			{
 				cout << "Failed to load lose image" << endl;
 				success = false;
 			}
 
-			if (!gPlayButtonTexture.LoadFromFile("imgs/button/big_button/play_button.png", gRenderer))
+			if (!gPlayButtonTexture.LoadFromFile("imgs/button/play_button.png", gRenderer))
 			{
 				cout << "Failed to load play_button image" << endl;
 				success = false;
@@ -376,7 +364,7 @@ bool LoadMedia()
 				}
 			}
 
-			if (!gIntroButtonTexture.LoadFromFile("imgs/button/big_button/intro_button.png", gRenderer))
+			if (!gIntroButtonTexture.LoadFromFile("imgs/button/intro_button.png", gRenderer))
 			{
 				cout << "Failed to load intro_button image" << endl;
 				success = false;
@@ -389,7 +377,7 @@ bool LoadMedia()
 				}
 			}
 
-			if (!gBackButtonTexture.LoadFromFile("imgs/button/big_button/back_but.png", gRenderer))
+			if (!gBackButtonTexture.LoadFromFile("imgs/button/back_but.png", gRenderer))
 			{
 				cout << "Failed to load back_button image" << endl;
 				success = false;
@@ -402,7 +390,7 @@ bool LoadMedia()
 				}
 			}
 
-			if (!gPauseButtonTexture.LoadFromFile("imgs/button/big_button/pause_but.png", gRenderer))
+			if (!gPauseButtonTexture.LoadFromFile("imgs/button/pause_but.png", gRenderer))
 			{
 				cout << "Failed to load pause_button image " << endl;
 				success = false;
@@ -415,7 +403,7 @@ bool LoadMedia()
 				} 
 			}
 
-			if (!gContinueButtonTexture.LoadFromFile("imgs/button/big_button/continue_but.png", gRenderer))
+			if (!gContinueButtonTexture.LoadFromFile("imgs/button/continue_but.png", gRenderer))
 			{
 				cout << "Failed to load continue_button image " << endl;
 				success = false;
@@ -468,8 +456,6 @@ void Close()
 	gLoseTexture.Free();
 	gText1Texture.Free();
 	gScoreTexture.Free();
-	gText2Texture.Free();
-	gHighScoreTexture.Free();
 
 	for (int i = 0; i < BackgroundLayer; ++i)
 	{
