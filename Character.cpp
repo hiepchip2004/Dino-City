@@ -49,12 +49,12 @@ void Character::Move()
 	{
 		posY -= JumpSpeed;
 		Uint32 jumpTime = SDL_GetTicks() - jumpStart;
-		if (jumpTime > 250) {
+		if (jumpTime > 350) {
 			isFalling = true;
 			status = FALL;
 		}
 	}
-	if (isFalling || posY < Ground && SDL_GetTicks() - jumpStart > 150) {
+	if (isFalling || posY < Ground && SDL_GetTicks() - jumpStart > 250) {
 		posY += FallSpeed;
 		if (posY >= Ground) { // gặp ground ngừng rơi 
 			posY = Ground;
