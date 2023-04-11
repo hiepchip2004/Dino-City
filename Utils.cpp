@@ -402,20 +402,6 @@ void DrawPlayerScore(LTexture gTextTexture,
 	}
 }
 
-void DrawPlayerHighScore(LTexture gTextTexture,
-	LTexture gHighScoreTexture, 
-	SDL_Color textColor, 
-	SDL_Renderer* gRenderer, 
-	TTF_Font* gFont, 
-	const std::string& HighScore)
-{
-	gTextTexture.Render(Text2X, Text2Y, gRenderer);
-	if (gHighScoreTexture.LoadFromRenderedText(HighScore, gFont, textColor, gRenderer))
-	{
-		gHighScoreTexture.Render(HighScoreX, HighScoreY, gRenderer);
-	}
-}
-
 void DrawEndGameSelection(LTexture gLoseTexture,
 	SDL_Event *e, 
 	SDL_Renderer *gRenderer,
